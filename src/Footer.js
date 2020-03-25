@@ -4,10 +4,10 @@ import Contacts from "./Contacts";
 
 function Footer() {
     return (
-        <div>
+        <>
         <FooterMenu/>
         <Contacts/>
-        </div>
+        </>
 );
 }
 
