@@ -7,7 +7,7 @@ function Header(props) {
         <dev>
             {props.titile} {props.version}
      <Logo/>
-     <HeaderMenu/>
+     <HeaderMenu MenuItems = {props.MenuItems}/>
         </dev>
     )
 }
