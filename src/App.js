@@ -6,7 +6,7 @@ import Footer from "./Components/Footer/Footer";
 
 function App() {
      const x = 'REACT!';
-     const MenuItems = [1,2,3,4];
+     const MenuItems = ['Courses','Cards','Group','Diary'];
     return (
         <div className="App">
             <Header MenuItems = {MenuItems} titile = {x} version = '0.0.2'/>
