@@ -1,4 +1,5 @@
 body {
-    background: #61dafb;
+    background: linear-gradient(to bottom right, azure, #61dafb);
+    //background: azure;
 
 }
