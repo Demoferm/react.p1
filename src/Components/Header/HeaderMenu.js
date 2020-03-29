@@ -3,7 +3,10 @@ import HeaderMenuItem from "./HeaderMenuItem";
 
 function HeaderMenu(props) {
     return(
-    <HeaderMenuItem MenuItems = {props.MenuItems}/>
+        <p align='right'>
+        {props.MenuItems.map((el) => <HeaderMenuItem key={el} item={el} />)}
+    </p>
+    // <HeaderMenuItem MenuItems = {props.MenuItems}/>
     )
 }
 

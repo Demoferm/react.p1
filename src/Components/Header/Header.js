@@ -5,7 +5,7 @@ import HeaderMenu from "./HeaderMenu";
 function Header(props) {
     return (
         <dev>
-            | Course: {props.titile} | <em>version: {props.version} </em>|
+            | Course: <strong>{props.titile}</strong> | <em>version: {props.version} </em>|
      <Logo/>
      <HeaderMenu MenuItems = {props.MenuItems}/>
         </dev>
