@@ -6,7 +6,7 @@ function FooterMenuItem(props) {
         /*    {props.MenuItems.map((el,i) => <a href="#"><li key={i}>{el}</li></a>)}*/
         /*</p>*/
         <span>
-            <a href={props.item.url}>{props.item.name}</a>
+            <a className="menu" href={props.item.url}>{props.item.name}</a>
         &nbsp;
         </span>
     )

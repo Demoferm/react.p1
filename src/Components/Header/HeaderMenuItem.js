@@ -7,7 +7,7 @@ function HeaderMenuItem(props) {
         //
         // </p>
         <span>
-        <a href={props.item.url}>{props.item.name}</a>
+        <a className='menu' href={props.item.url}>{props.item.name}</a>
             &nbsp;
         </span>
     )
