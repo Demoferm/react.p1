@@ -37,11 +37,12 @@ function App() {
 
 
     return (
-        <div className="App">
+        <div class="container">
             <Header MenuItems={MenuItems} titile={x} version='0.0.3'/>
             <Content MenuButtons={MenuButtons} onButtonClick={onButtonClick}/>
             <Footer MenuItems={MenuItems}/>
         </div>
+
     );
 }
 
