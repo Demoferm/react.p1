@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Header from "./Components/Header/Header";
 import Content from "./Components/Content/Content";
 import Footer from "./Components/Footer/Footer";
 
 function App() {
+    const [todo, setTodo] = useState('Hi')
+    const todoChange = (e) => {
+        setTodo(e.target.value);
+    }
+
     const x = 'REACT!';
     const MenuItems = [
         {
@@ -37,10 +42,11 @@ function App() {
 
 
     return (
-        <div class="container">
-            <Header MenuItems={MenuItems} titile={x} version='0.0.3'/>
+        <div className="container">
+            <Header MenuItems={MenuItems} titile={x} version='0.0.4'/>
             <Content MenuButtons={MenuButtons} onButtonClick={onButtonClick}/>
             <Footer MenuItems={MenuItems}/>
+            {todo} <input type='text' placeholder='...' onChange={todoChange}/>
         </div>
 
     );
