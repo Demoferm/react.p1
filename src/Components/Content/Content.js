@@ -5,15 +5,15 @@ function Content(props) {
     const [calcResult, setCalcResult] = useState(0);
     const [minRange, setRangeMin] = useState(0);
     const [maxRange, setRangeMax] = useState(0);
-    const [range, testSetRange] = useState([]);
+    const [range, setRange] = useState([]);
 
     const ButtonClickCalc = (e) => {
         setCalcResult(+calcResult + +e);
     }
 
-    function test(min,max) {
+    function createArr(min,max) {
         let CalcArr = [];
-        if (min <= max && min > 0 && max > 0 && max <= 100 && min <= 100) {
+        if (+min <= +max && +min > 0 && +max > 0 && +max <= 100 && +min <= 100) {
             CalcArr = [];
             for (let i = min; i <= max; i++) {
                 CalcArr.push(i);
@@ -27,11 +27,11 @@ function Content(props) {
     const onChangeRange = (e) => {
         if (e.target.name === "lower") {//alert(e.target.name);
             setRangeMin(e.target.value);
-            testSetRange (test (e.target.value, maxRange));
+            setRange (createArr (e.target.value, maxRange));
         }
         if (e.target.name === 'upper') { //alert(e.target.name);
             setRangeMax(e.target.value);
-            testSetRange (test (minRange, e.target.value));
+            setRange (createArr (minRange, e.target.value));
         }
     }
 
