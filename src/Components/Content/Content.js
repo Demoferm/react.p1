@@ -2,26 +2,37 @@ import React, {useState} from 'react';
 import Logo from "../Header/Logo";
 
 function Content(props) {
-    const [calcResult, setCalcResult] = useState('0')
-    const [[minRange,maxRange], setRange] = useState([0,0])
+    const [calcResult, setCalcResult] = useState(0);
+    const [minRange, setRangeMin] = useState(0);
+    const [maxRange, setRangeMax] = useState(0);
+    const [range, testSetRange] = useState([]);
+
     const ButtonClickCalc = (e) => {
         setCalcResult(+calcResult + +e);
     }
-    let CalcArr=[];
-    if (minRange<=maxRange && minRange>0 && maxRange>0 && maxRange <=100 && minRange <= 100)  {
-        CalcArr = [];
-        for (let i = minRange; i <= maxRange; i++)
-        CalcArr.push(i);
-    }
 
-    const onChangeRangeMax = (e) => {
-        setRange([minRange,e.target.value]);
+    function test(min,max) {
+        let CalcArr = [];
+        if (min <= max && min > 0 && max > 0 && max <= 100 && min <= 100) {
+            CalcArr = [];
+            for (let i = min; i <= max; i++) {
+                CalcArr.push(i);
+            }
+        }
+        return CalcArr;
     }
-        const onChangeRangeMin = (e) => {
-         // if (e.target.name=='upper')
-            setRange([e.target.value,maxRange]);
-         // if (e.target.name==='lower')
-         //     setRange([minRange,e.target.value]);
+    // const onChangeRangeMax = (e) => {
+    //     setRange([minRange,e.target.value]);
+    // }
+    const onChangeRange = (e) => {
+        if (e.target.name === "lower") {//alert(e.target.name);
+            setRangeMin(e.target.value);
+            testSetRange (test (e.target.value, maxRange));
+        }
+        if (e.target.name === 'upper') { //alert(e.target.name);
+            setRangeMax(e.target.value);
+            testSetRange (test (minRange, e.target.value));
+        }
     }
 
     return (
@@ -45,7 +56,8 @@ function Content(props) {
                     software like Aldus PageMaker including versions of Lorem Ipsum. </p>
             </div>
             <div className='col-4' align='right'>
-                <p>Enter your name:</p><p><input type='text' id='name' color='red' placeholder='write here...'/>
+                <p>Enter your name:</p>
+                <p><input type='text' id='name' color='red' placeholder='write here...'/>
                     <button onClick={() => {
                         props.onButtonClick(document.getElementById('name').value)
                     }}>OK
@@ -54,7 +66,7 @@ function Content(props) {
                         document.getElementById('name').value = '';
                     }}>CANCEL
                     </button>
-            </p>
+                </p>
             </div>
             <div align='center' className='col-8'>
                 <p>{props.MenuButtons.map(el => <button key={el} onClick={() => {
@@ -62,34 +74,37 @@ function Content(props) {
                 }}>{el}</button>)}</p>
                 <div className='row'>
                     <div className='col-12'>
-            <h2 align='center'>Calculator</h2>
+                        <h2 align='center'>Calculator</h2>
                     </div>
                     <div className='col-12'>
                         <p align='center'>(Values have to be between 1 and 100)</p>
                     </div>
                     <div className='col-6'>
-                <p align='right'> <input type='text' name='lower' placeholder='From' onChange={onChangeRangeMin}/></p>
+                        <p align='right'><input type='text' name='lower' placeholder='From' onChange={onChangeRange}/>
+                        </p>
                     </div>
                     <div className='col-6'>
-                        <p align='left'> <input type='text' name='upper' placeholder='To' onChange={onChangeRangeMax}/></p>
+                        <p align='left'><input type='text' name='upper' placeholder='To' onChange={onChangeRange}/></p>
                     </div>
                     <div align='right' className='col-4'>
-                    <p>{CalcArr.reverse().map(el => <button key={-el} onClick={() => {
-                    ButtonClickCalc(-el)
-                    }}>-{el}</button>)}</p>
+                        <p>{range.reverse().map(el => <button key={-el} onClick={() => {
+                            ButtonClickCalc(-el)
+                        }}>-{el}</button>)}</p>
                     </div>
-<div align='center' className='col-4'>
-                <h1 id='calcResult'>{calcResult}</h1>
-    <p><button onClick={() => {
-        document.getElementById('calcResult').textContent = '0';
-    }}>RESET
-    </button></p>
-</div>
-                        <div align='left' className='col-4'>
-                            <p>{CalcArr.reverse().map(el => <button key={el} onClick={() => {
-                                ButtonClickCalc(el)
-                            }}>+{el}</button>)}</p>
-                        </div>
+                    <div align='center' className='col-4'>
+                        <h1 id='calcResult'>{calcResult}</h1>
+                        <p>
+                            <button onClick={() => {
+                                document.getElementById('calcResult').textContent = '0';
+                            }}>RESET
+                            </button>
+                        </p>
+                    </div>
+                    <div align='left' className='col-4'>
+                        <p>{range.reverse().map(el => <button key={el} onClick={() => {
+                            ButtonClickCalc(el)
+                        }}>+{el}</button>)}</p>
+                    </div>
 
                 </div>
             </div>
