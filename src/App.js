@@ -5,11 +5,11 @@ import Content from "./Components/Content/Content";
 import Footer from "./Components/Footer/Footer";
 
 function App() {
-    const [todo, setTodo] = useState('Hi')
-    const todoChange = (e) => {
-        setTodo(e.target.value);
-    }
-
+    // const [todo, setTodo] = useState('Hi')
+    // const todoChange = (e) => {
+    //     setTodo(e.target.value);
+    // }
+// let CalcArr=[];
     const x = 'REACT!';
     const MenuItems = [
         {
@@ -46,7 +46,7 @@ function App() {
             <Header MenuItems={MenuItems} titile={x} version='0.0.4'/>
             <Content MenuButtons={MenuButtons} onButtonClick={onButtonClick}/>
             <Footer MenuItems={MenuItems}/>
-            {todo} <input type='text' placeholder='...' onChange={todoChange}/>
+            {/*{todo} <input type='text' placeholder='...' onChange={todoChange}/>*/}
         </div>
 
     );
