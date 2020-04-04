@@ -79,7 +79,11 @@ function Content(props) {
                     }}>-{el}</button>)}</p>
                     </div>
 <div align='center' className='col-4'>
-                <h1 >{calcResult}</h1>
+                <h1 id='calcResult'>{calcResult}</h1>
+    <p><button onClick={() => {
+        document.getElementById('calcResult').textContent = '0';
+    }}>RESET
+    </button></p>
 </div>
                         <div align='left' className='col-4'>
                             <p>{CalcArr.reverse().map(el => <button key={el} onClick={() => {
